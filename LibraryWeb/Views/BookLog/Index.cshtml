@@ -1,0 +1,93 @@
+@model System.Collections.Generic.IEnumerable<LibraryWeb.DTOs.BookLogDto>
+
+@{
+    ViewData["Title"] = "BOOKLOG";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>BOOKLOG</h1>
+<p>
+    <a asp-action="Create">Add</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+    <td>
+    @*     <form asp-action="Edit" asp-route-id="@item.Id"> *@
+    @*         <input type="submit" value="Edit" /> *@
+    @*     </form> *@
+    @*     <form asp-action="Details" asp-route-id="@item.Id"> *@
+    @*         <input type="submit" value="Details" /> *@
+    @*     </form> *@
+    @*     <form asp-action="Delete" asp-route-id="@item.Id"> *@
+    @*         <input type="submit" value="Delete" /> *@
+    @*     </form> *@
+    @*     @Html.ActionLink( *@
+    @*         "Edit",  *@
+    @*         "Home",  *@
+    @*         null ,  *@
+    @*         new {  *@
+    @*             style = "background: url('" + Url.Content("~/Assets/ed.png") + "') no-repeat center right; display:block; height:84px; width:264px;"  *@
+    @*         } *@
+    @*         ) *@
+    @* </td> *@
+    @* <td> *@
+    @* </td> *@
+    @*   <td> *@
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+<script src="~/js/BookLog.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
